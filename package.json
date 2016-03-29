@@ -1,0 +1,16 @@
+{
+  "title": "smallStatusCode",
+  "name": "smallstatuscode",
+  "version": "0.0.1",
+  "description": "adds the HTTP response Code to HTML source",
+  "main": "index.js",
+  "author": "Ezra Knobloch",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}
