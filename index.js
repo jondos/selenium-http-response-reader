@@ -29,6 +29,7 @@ pageMod.PageMod({
     worker.on('detach', function(){
       requests.detacher.detachWorker(this, workers);
       requests.requestsDone_setter.set_setter(0);
+      requests.workers_setter.setter(workers);
       console.log("DETACHED");
     });
   }

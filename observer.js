@@ -72,22 +72,22 @@ var iterater = {
         if(value == "YES"){
           
           for(var ii = 0; ii < possible_headers.length; ii = ii+4){
-            
+          
             if(possible_headers[ii] == getHostfromURL(workers[i-1].url)){
             
               workers[i-1].port.emit("getProto", "Failed/NotFound");
               workers[i-1].port.emit("getReason", possible_headers[ii+2]);
               workers[i-1].port.emit("getStatus", possible_headers[ii+3]);
-              workers[i-1].port.emit("getPath", currPath);
+              workers[i-1].port.emit("getPath", "httprO: " + possible_headers[ii] + currPath + " || worker: " + workers[i-1].url);
             
               workers[i-1].port.emit("isAllowed", "YES");
               
-              console.log("YEAH from: (worker)" + workers[i-1].url + " || (poss) " + possible_headers[ii]);
+              console.log("YEAH from: (worker) " + workers[i-1].url + " || (poss) " + possible_headers[ii]);
             
             }
             else{
             
-              console.log("TESTED: " + possible_headers[ii]);
+              console.log("TESTED: " + possible_headers[ii] + " (not equals " + getHostfromURL(workers[i-1].url) + ")");
             
             }
           
@@ -331,7 +331,7 @@ var httpRequestObserver = {
       
         if((httpChannel.URI.host && requestsDone == 0) || possible_headers.length == 0){
         
-          possible_headers.push(httpChannel.URI.host);
+          possible_headers.push(httpChannel.URI.host); //handle subdomains here
           possible_headers.push(httpChannel.URI.path);
           possible_headers.push(httpChannel.responseStatusText);
           possible_headers.push(httpChannel.responseStatus);
